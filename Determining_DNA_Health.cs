@@ -16,11 +16,11 @@ using System;
 
 class Node
 {
-    public int[] Next = new int[26];   // transitions
-    public int Link = 0;               // failure link
-    public int OutputLink = -1;        // next node with output on failure chain
-    public List<int> Indices = new List<int>();     // gene indices
-    public List<long> PrefixHealth = new List<long>(); // prefix sums of health
+    public int[] Next = new int[26];  
+    public int Link = 0;          
+    public int OutputLink = -1;        
+    public List<int> Indices = new List<int>();     
+    public List<long> PrefixHealth = new List<long>(); 
 
     public Node()
     {
@@ -100,7 +100,7 @@ class Solution
                 cur = nodes[cur].Next[c];
             }
 
-            // end of gene g at node cur
+            
             Node node = nodes[cur];
             node.Indices.Add(i);
 
@@ -108,10 +108,10 @@ class Solution
             node.PrefixHealth.Add(last + health[i]);
         }
 
-        // 2. Build failure links (Aho-Corasick) and fill missing transitions
+    
         Queue<int> q = new Queue<int>();
 
-        // root links
+      
         for (int c = 0; c < 26; c++)
         {
             int nxt = nodes[0].Next[c];
